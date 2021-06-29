@@ -29,6 +29,7 @@ To begin with, germination starts as the seed absorbs water and oxygen through i
 
 The phenology extraction method relies on the investigation of satellite derived time-series and more precisely on the analysis of three different indices such as the Normalized Difference Vegetation Index (NDVI), the Normalized Difference Water Index (NDWI) and the Plant Senescence Reflectance Index (PSRI). NOA has already implemented a phenology extraction method combining the abovementioned indices for detecting phenological phases of paddy rice in South Korea, implementing the TIMESAT package. Extending the existing methodology and combining phenological processes and metrics from three different freely available packages, which are namely TIMESAT , CropPhenology  and FenicePhenolo , NOA has finalized its own generalized fully automated prototype for phenology extraction escaping from the user-oriented limitations of the TIMESAT package. 
 
-![Picture1](https://user-images.githubusercontent.com/39597223/123802419-f55b8380-d8f3-11eb-83bc-575a59e02f8b.png)
+![Picture1-removebg-preview](https://user-images.githubusercontent.com/39597223/123802569-1f14aa80-d8f4-11eb-9dc7-2b950ca18eb2.png)
+
 
 
