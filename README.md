@@ -14,22 +14,62 @@ Phenology_Extraction_NOA in detail:
 Based on an extended bibliographic research, this workflow was constructed in order to identify the critical phenological phases describing cotton crop, in order to evaluate the results of the developed phenology extraction service and improve the precision of the model. Within this framework, three phenological phases have been identified, apart from the germination phase, which are the vegetative, the reproducing and the ripening phase respectively. Each of these phases, are separated in individual phenological stages which describe the physiognomy of the plant. Moreover, the phenological development stages of plants, which is used in a variety of fields of application, such as in a number of scientific disciples and in the agricultural industry, use the BBCH-scale decimal code system, which is divided into primary and secondary growth stages, developed by Zadoks , to describe the stages of growth in plants. The following table presents the primary growth stages of cotton crop in the BBCH-scale among with the corresponding phenological stages and the phenological phases which are belong:
 
 BBCH Code	Definition	Phenological Stage	Phenological Phase
-0	Germination	Germination	Germination phase
-1	Leaf Development (main shoot)	Tillering stage	Vegetative phase
-2	Formation of side shoots		
-3	Stem elongation (main shoot)	Stem elongation	
-4	Development of harvestable vegetative plant parts	Panicle initiation	Reproductive phase
-5	Inflorescence emergence	Booting/Heading stage	
-6	Flowering	Flowering stage	
-7	Development of fruits and seeds	Milk stage	Ripening phase
-8	Ripening of fruits and seeds	Dough stage	
-9	Senescence	Mature stage	
+0 -	Germination	Germination	Germination phase
+1 -	Leaf Development (main shoot)	Tillering stage	Vegetative phase
+2 -	Formation of side shoots		
+3 -	Stem elongation (main shoot)	Stem elongation	
+4 -	Development of harvestable vegetative plant parts	Panicle initiation	Reproductive phase
+5 -	Inflorescence emergence	Booting/Heading stage	
+6 -	Flowering	Flowering stage	
+7 -	Development of fruits and seeds	Milk stage	Ripening phase
+8 -	Ripening of fruits and seeds	Dough stage	
+9 -	Senescence	Mature stage	
 
 To begin with, germination starts as the seed absorbs water and oxygen through its chalaza after planting. The hypocotyl elongates from the radicle and form an arch that begins to push up through the soil. The seedling emergence normally takes place 4 to 14 days after sowing and after a week the first true leaf forms above cotyledons and shift from emergence to vegetative growth. At this point, the germination and seedlings emergence stages are finished, and the plant enters the vegetative phase. The vegetative phase starts when the first vegetative structures appear on the main stem. Main stem leaves and branches form points of attachment on the main stem called nodes. Generally, a new node is produced an average of every 3 days, although nodes develop more quickly early in the growing season than later in the season. The development of vegetative growth and fruiting in this phase is highly related to temperature if adequate moisture is available. The plant growth and development are functions of the sunlight interception and temperature and new leaves appear increasing the leaf area of cotton plant rapidly.  Furthermore, cotton has an indeterminate growth habit and can grow very tall under conditions of unrestrained growth. Unmanaged growth promotes diseases and makes the cultivation practice of harvesting very difficult. Subsequently, the reproductive phase follows when reproductive structures begin to appear on the plant and the carbohydrate supplies are slowly shifted from the production of roots and leaves (vegetative phase) to the development of fruits (reproductive phase). As the fruit load on the plant increases and ages, the development of new leaves steadily declines. As a result, fruit development can be identified when the leaf population is steadily decreases. Furthermore, the leaf photosynthesis does not remain constant as the leaf grows, where after 20 days of age, a cotton leaf reaches its maximum photosynthetic capacity and therefore declines. At the phenological stage of flowering, the squares are visible on nodes about 35 days after planting and the whole blooming time lasts approximately six weeks. Finally, the ripening phase follows, where the pollinated flowers form cotton bolls and around 5-7 days after bloom, flower dries and falls off, exposing the cotton boll. After pollination, it takes 50 days for the boll to fully develop and open. The three major phases of boll development are categorized as the enlargement, filling and maturation phase.  
 
 The phenology extraction method relies on the investigation of satellite derived time-series and more precisely on the analysis of three different indices such as the Normalized Difference Vegetation Index (NDVI), the Normalized Difference Water Index (NDWI) and the Plant Senescence Reflectance Index (PSRI). NOA has already implemented a phenology extraction method combining the abovementioned indices for detecting phenological phases of paddy rice in South Korea, implementing the TIMESAT package. Extending the existing methodology and combining phenological processes and metrics from three different freely available packages, which are namely TIMESAT , CropPhenology  and FenicePhenolo , NOA has finalized its own generalized fully automated prototype for phenology extraction escaping from the user-oriented limitations of the TIMESAT package. 
 
-![Picture1-removebg-preview](https://user-images.githubusercontent.com/39597223/123802569-1f14aa80-d8f4-11eb-9dc7-2b950ca18eb2.png)
+![pipeline](https://user-images.githubusercontent.com/39597223/123803197-bed23880-d8f4-11eb-8f05-a52aa4e5f6e9.jpg)
+
+The pipeline commences with creating a robust cloud free without noise dataset with even spaced time-series. For this purpose, several interpolation approaches are utilized until the finalization of the dataset. To begin with, an outlier detection method is applied using the assumption that the data from every acquisition derived from the Sentinel-2 platform, regarding the parcels of investigation follow a gaussian distribution. Accordingly, the values are reviewed in order to evaluate the 3-sigma rule and therefore lie within three standard deviations expressing the 99.7% of the entire data per acquisition. Furthermore, a weighted average interpolation follows to construct decadal time-series from the raw data acquisitions, filling the fixed timestamps that fall within a ten-day range of the acquisition. The remaining empty decadal timestamps that do not fall within the desired range are subsequently created employing second order polynomial interpolation. Anew, the previously mentioned outlier detection based on the 3-sigma-rule is applied to detect any anomalies created from the interpolation procedure.
+
+Major part of the phenology extraction pipeline is the regression fitting of the time-series curve using the signal Savitzky-Golay filter for smoothing the data in order to increase precision and of the data without distorting the signal tendency. Savitzky-Golay approach was selected among other fitting approaches, such as least-squares fitted asymmetric Gaussian or double logistic smooth functions, as it captures both subtle and rapid changes in the time-series, providing a better understanding for the beginning and for the ending of the growing season. Before applying the Savitzky-Golay filtering, linear interpolation is employed to the time-series to transfer the temporal scale from decadal timestep to daily values for generating results comparable between data sources with different time aggregation windows. Subsequently, the iterative Savitzky-Golay filter is employed to the interpolated time-series with 4th polynomial degrees and a length of 50 days, in order to remove short peaks and drop-offs, resulting in reference time-series on which phenological metrics can be computed. 
+
+Bearing in mind developing a general transferable model for phenology extraction without user-oriented limitations, the moving average calculation proposed by Reed et al. (1994)  for calculating the phenological and productivity variables, is applied finding the intersection points, as start and end of season, between the moving average and the reference curve. The rolling average is implemented with a forwards and backwards lag, which is the moving average window defined as the length of the non-growing season. For each individual input entity in the phenology extraction pipeline, the average length of the non-growing season that describe the moving average window, is calculated through estimating primary the growing season length from two subsequent NDVI signal minima and the signal describing the seasonal crop growth. On the assumption that the seasonal crop growth follows a normal distribution, two standard deviations computed from the barycenter of the area which describe the 68.2% of the statistical population define the Seasonal growing LEngth (SLE). Moreover, the desired lag for defining the moving average window was calculated based on the following formula:
+
+![Capture](https://user-images.githubusercontent.com/39597223/123803473-00fb7a00-d8f5-11eb-89c3-84233a01a1e3.PNG)
+
+where L is lag in days, N the number of years in the time-series and 365 the number of days in the year. In this way, the dynamics of each entity is incorporated in the derivation of phenological metrics in an objective and user-independent way. 
+
+![image](https://user-images.githubusercontent.com/39597223/123803519-0a84e200-d8f5-11eb-8105-3bd14032dcea.png)
+
+The final phenological products are eleven phenological metrics describing the phenological crop phases. The start, peak and end of season are determined, as mentioned before, as the intersections of the reference time-series and the forward and backward lagged moving average curves respectively measured in Days of Year (DOY). The rate of increase in NDVI during the beginning of the season is related to the physiognomy of the vegetation and the green up rate, as it describes the velocity at which the crop moves from the germination stage to the growth stage of the plant. On the other hand, the rate of decrease describes the rate of senescence at which the crop shifts from the flowering phase to the ripening stage, where the harvesting begins. Additionally, seven phenological integrals describing the productivity of the seasonal crop are calculated as expressed from the three abovementioned phenological packages (TIMESAT, CropPhenology, FenicePhenolo) and describe different phenological components. 
+
+![image](https://user-images.githubusercontent.com/39597223/123803566-14a6e080-d8f5-11eb-9db2-0414edd401d0.png)
+
+The large season integral (LSI) can be used as a proxy of the relative amount of vegetation biomass without regarding the minimum values, whereas the small season integral (SSI) as a proxy of the relative amount of vegetation of biomass while regarding the minimum values . Furthermore, the cyclic fraction (CF) is directly related to the purely seasonal growth, whereas the permanent fraction (PF) describes the amount of vegetation that does not have a characteristic seasonal cycle within the growing season and the minimum permanent integral (MPI) describes the perennial vegetation component and depending on the vegetation index used may also contain components of soil substate. 
+
+![image](https://user-images.githubusercontent.com/39597223/123803607-1cff1b80-d8f5-11eb-8f89-cbac87994532.png)
+
+As regards the TINDVIBeforeMax (BMI), describes the pre-anthesis crop growth, as pre-anthesis crop canopy growth is important for reducing evaporation of water from the soil surface and high values indicate high biomass accumulated before anthesis, which can indicate lower water evaporation from soil and high number of tillers and kernels being formed and can be used as a biomass proxy. Finally, the TINDVIAfterMax (AMI) describes the post-anthesis crop growth, where high values indicate smaller reductions in accumulated biomass during the post anthesis period, which relate to a slower and longer process of grain filling and is associated with low yield, can be used a yield proxy.
+
+![image](https://user-images.githubusercontent.com/39597223/123803687-2c7e6480-d8f5-11eb-862e-52dd6467a6ea.png)
+
+The following table presents the calculated phenological metrics jointly with the way calculated:
+Phenological Metric	Explanation
+Time of the start of season (SOS) -	Time of the intersection point between the reference NDVI curve and the forward lagged moving average
+Time for the peak of the season (POS) -	Time of the maximum NDVI value
+Time of the end of season (EOS) -	Time of the intersection point between the reference NDVI curve and the backwards lagged moving average
+Rate of Increase (RoI) -	Rate of difference between the SOS and the POS levels and the corresponding time difference
+Rate of Decrease (RoD) -	Rate of difference between the POS and the EOS levels and the corresponding time difference
+Base level (BL) -	Given as the average of the left and right minimum values
+Large seasonal integral (LSI) -	Integral of the function describing the season from the season start to the season end
+Small seasonal integral (SSI) -	Integral of the difference between the function describing the season and the base level from season start to season end
+Cyclic fraction (CF) -	Integral defined from line above start (SOS) and end of season (POS) time and the line connecting SOS and POS
+Permanent fraction (PF) -	Integral of area defined from the two subsequent local minima and the SOS and POS points
+Minimum permanent integral (MPI) -	Integral of area defined from the line connecting the subsequent local minima and the time axis x
+TINDVIBeforeMax integral (BMI) -	Numerical integration of NDVI between SOS and POS
+TINDVIAfterMax integral (AMI) -	Numerical integration of NDVI between POS and EOS
 
 
 
