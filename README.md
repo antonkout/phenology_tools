@@ -41,7 +41,7 @@ Bearing in mind developing a general transferable model for phenology extraction
 
 where L is lag in days, N the number of years in the time-series and 365 the number of days in the year. In this way, the dynamics of each entity is incorporated in the derivation of phenological metrics in an objective and user-independent way. 
 
-![image](https://user-images.githubusercontent.com/39597223/123803519-0a84e200-d8f5-11eb-8105-3bd14032dcea.png)
+![image](https://user-images.githubusercontent.com/39597223/123805016-66039f80-d8f6-11eb-8b96-60dd0d4a1b0f.png)
 
 The final phenological products are eleven phenological metrics describing the phenological crop phases. The start, peak and end of season are determined, as mentioned before, as the intersections of the reference time-series and the forward and backward lagged moving average curves respectively measured in Days of Year (DOY). The rate of increase in NDVI during the beginning of the season is related to the physiognomy of the vegetation and the green up rate, as it describes the velocity at which the crop moves from the germination stage to the growth stage of the plant. On the other hand, the rate of decrease describes the rate of senescence at which the crop shifts from the flowering phase to the ripening stage, where the harvesting begins. Additionally, seven phenological integrals describing the productivity of the seasonal crop are calculated as expressed from the three abovementioned phenological packages (TIMESAT, CropPhenology, FenicePhenolo) and describe different phenological components. 
 
