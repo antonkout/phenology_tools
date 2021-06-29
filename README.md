@@ -19,17 +19,17 @@ NDVI-NDWI-PSRI for komotini parcels: Exploring timeseries of NDVI, NDWI, PSRI in
 ## Phenology_Extraction_NOA in detail:
 Based on an extended bibliographic research, this workflow was constructed in order to identify the critical phenological phases describing cotton crop, in order to evaluate the results of the developed phenology extraction service and improve the precision of the model. Within this framework, three phenological phases have been identified, apart from the germination phase, which are the vegetative, the reproducing and the ripening phase respectively. Each of these phases, are separated in individual phenological stages which describe the physiognomy of the plant. Moreover, the phenological development stages of plants, which is used in a variety of fields of application, such as in a number of scientific disciples and in the agricultural industry, use the BBCH-scale decimal code system, which is divided into primary and secondary growth stages, developed by Zadoks , to describe the stages of growth in plants. The following table presents the primary growth stages of cotton crop in the BBCH-scale among with the corresponding phenological stages and the phenological phases which are belong:
 
-BBCH Code	Definition	Phenological Stage	Phenological Phase
-0 -	Germination	Germination	Germination phase
-1 -	Leaf Development (main shoot)	Tillering stage	Vegetative phase
-2 -	Formation of side shoots		
-3 -	Stem elongation (main shoot)	Stem elongation	
-4 -	Development of harvestable vegetative plant parts	Panicle initiation	Reproductive phase
-5 -	Inflorescence emergence	Booting/Heading stage	
-6 -	Flowering	Flowering stage	
-7 -	Development of fruits and seeds	Milk stage	Ripening phase
-8 -	Ripening of fruits and seeds	Dough stage	
-9 -	Senescence	Mature stage	
+BBCH Code	Definition	Phenological Stage	Phenological Phase<br/>
+0 -	Germination	Germination/	Germination phase<br/>
+1 -	Leaf Development (main shoot)	Tillering stage/	Vegetative phase<br/>
+2 -	Formation of side shoots<br/>		
+3 -	Stem elongation (main shoot)<br/>
+4 -	Development of harvestable vegetative plant parts	Panicle initiation/ Reproductive phase<br/>
+5 -	Inflorescence emergence	Booting/ Heading stage<br/>	
+6 -	Flowering/ Flowering stage<br/>	
+7 -	Development of fruits and seeds	Milk stage/ Ripening phase<br/>
+8 -	Ripening of fruits and seeds/ Dough stage<br/>
+9 -	Senescence	Mature stage<br/>	
 
 ### Major Phenological Stages
 To begin with, germination starts as the seed absorbs water and oxygen through its chalaza after planting. The hypocotyl elongates from the radicle and form an arch that begins to push up through the soil. The seedling emergence normally takes place 4 to 14 days after sowing and after a week the first true leaf forms above cotyledons and shift from emergence to vegetative growth. At this point, the germination and seedlings emergence stages are finished, and the plant enters the vegetative phase. The vegetative phase starts when the first vegetative structures appear on the main stem. Main stem leaves and branches form points of attachment on the main stem called nodes. Generally, a new node is produced an average of every 3 days, although nodes develop more quickly early in the growing season than later in the season. The development of vegetative growth and fruiting in this phase is highly related to temperature if adequate moisture is available. The plant growth and development are functions of the sunlight interception and temperature and new leaves appear increasing the leaf area of cotton plant rapidly.  Furthermore, cotton has an indeterminate growth habit and can grow very tall under conditions of unrestrained growth. Unmanaged growth promotes diseases and makes the cultivation practice of harvesting very difficult. Subsequently, the reproductive phase follows when reproductive structures begin to appear on the plant and the carbohydrate supplies are slowly shifted from the production of roots and leaves (vegetative phase) to the development of fruits (reproductive phase). As the fruit load on the plant increases and ages, the development of new leaves steadily declines. As a result, fruit development can be identified when the leaf population is steadily decreases. Furthermore, the leaf photosynthesis does not remain constant as the leaf grows, where after 20 days of age, a cotton leaf reaches its maximum photosynthetic capacity and therefore declines. At the phenological stage of flowering, the squares are visible on nodes about 35 days after planting and the whole blooming time lasts approximately six weeks. Finally, the ripening phase follows, where the pollinated flowers form cotton bolls and around 5-7 days after bloom, flower dries and falls off, exposing the cotton boll. After pollination, it takes 50 days for the boll to fully develop and open. The three major phases of boll development are categorized as the enlargement, filling and maturation phase.  
@@ -54,9 +54,8 @@ where L is lag in days, N the number of years in the time-series and 365 the num
 
 <p align="center">
   <b></b>
-  <b>The moving average implementation for finding intersection points (in red) 
-    with the reference curve defining start and end of season</b>
-  <img src="https://user-images.githubusercontent.com/39597223/123809942-b11fb180-d8fa-11eb-92a6-af26c3e64cf1.png" width="500" height="400" >
+  <b>The moving average implementation for finding intersections with the reference curve </b>
+  <img src="https://user-images.githubusercontent.com/39597223/123809942-b11fb180-d8fa-11eb-92a6-af26c3e64cf1.png" width="400" height="300" >
   </p>
 
 ### Phenological Metrics  
@@ -84,21 +83,21 @@ As regards the TINDVIBeforeMax (BMI), describes the pre-anthesis crop growth, as
   <img src="https://user-images.githubusercontent.com/39597223/123809557-600fbd80-d8fa-11eb-82ed-9a2ae79b4b2b.png" width="500" height="400" >
   </p>
 
-The following table presents the calculated phenological metrics jointly with the way calculated:
-Phenological Metric	Explanation
-Time of the start of season (SOS) -	Time of the intersection point between the reference NDVI curve and the forward lagged moving average
-Time for the peak of the season (POS) -	Time of the maximum NDVI value
-Time of the end of season (EOS) -	Time of the intersection point between the reference NDVI curve and the backwards lagged moving average
-Rate of Increase (RoI) -	Rate of difference between the SOS and the POS levels and the corresponding time difference
-Rate of Decrease (RoD) -	Rate of difference between the POS and the EOS levels and the corresponding time difference
-Base level (BL) -	Given as the average of the left and right minimum values
-Large seasonal integral (LSI) -	Integral of the function describing the season from the season start to the season end
-Small seasonal integral (SSI) -	Integral of the difference between the function describing the season and the base level from season start to season end
-Cyclic fraction (CF) -	Integral defined from line above start (SOS) and end of season (POS) time and the line connecting SOS and POS
-Permanent fraction (PF) -	Integral of area defined from the two subsequent local minima and the SOS and POS points
-Minimum permanent integral (MPI) -	Integral of area defined from the line connecting the subsequent local minima and the time axis x
-TINDVIBeforeMax integral (BMI) -	Numerical integration of NDVI between SOS and POS
-TINDVIAfterMax integral (AMI) -	Numerical integration of NDVI between POS and EOS
+The following table presents the calculated phenological metrics jointly with the way calculated:<br/>
+
+<b>Time of the start of season (SOS) </b>-	Time of the intersection point between the reference NDVI curve and the forward lagged moving average<br/>
+<b>Time for the peak of the season (POS) </b>-	Time of the maximum NDVI value<br/>
+<b>Time of the end of season (EOS) </b>-	Time of the intersection point between the reference NDVI curve and the backwards lagged moving average<br/>
+<b>Rate of Increase (RoI) </b>-	Rate of difference between the SOS and the POS levels and the corresponding time difference<br/>
+<b>Rate of Decrease (RoD) </b>-	Rate of difference between the POS and the EOS levels and the corresponding time difference<br/>
+<b>Base level (BL) </b>-	Given as the average of the left and right minimum values<br/>
+<b>Large seasonal integral (LSI) </b>-	Integral of the function describing the season from the season start to the season end<br/>
+<b>Small seasonal integral (SSI) </b>-	Integral of the difference between the function describing the season and the base level from season start to season end<br/>
+<b>Cyclic fraction (CF) </b>-	Integral defined from line above start (SOS) and end of season (POS) time and the line connecting SOS and POS<br/>
+<b>Permanent fraction (PF) </b>-	Integral of area defined from the two subsequent local minima and the SOS and POS points<br/>
+<b>Minimum permanent integral (MPI) </b>-	Integral of area defined from the line connecting the subsequent local minima and the time axis x<br/>
+<b>TINDVIBeforeMax integral (BMI) </b>-	Numerical integration of NDVI between SOS and POS<br/>
+<b>TINDVIAfterMax integral (AMI) </b>-	Numerical integration of NDVI between POS and EOS<br/>
 
 
 
