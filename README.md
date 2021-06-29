@@ -4,22 +4,22 @@ A repository folder regarding phenology extraction scripts utilizing existing pa
 PhenologyExtractionRodopi.ipynb, Phenology_Extraction_NOA.ipynb are written in python 3.7 where as TIMESAT&CropPhenology.ipynb, CreateAnimatedTimeseries.ipynb, TIMESAT, NDVI-NDWI-PSRI for komotini parcels.ipynb are wirtten in R.
 
 ### Description of scripts:
-PhenologyExtractionRodopi: Cotton phenology extraction from Sentinel-2 data, combined with ground truth data provided at parcel level from cotton farmers from Rodopi, Greece
+<b>PhenologyExtractionRodopi</b>: Cotton phenology extraction from Sentinel-2 data, combined with ground truth data provided at parcel level from cotton farmers from Rodopi, Greece
 
-Phenology_Extraction_NOA: Phenlogoy extraction methodology exteding existing phenology extraction approaches, proposing a fully automated prototype for phenology extraction escaping from the user-oriented limitations of the existing packages. The main steps of this procedure are outlier removal based on the gaussian distribution of values, temporal interpolation creating decadal dates, regression fitting with Savitzky-Golay fitting, moving average to define intersections between reference and moving average curves and finaly the phenology extraction of meaningful metrics.
+<b>Phenology_Extraction_NOA</b>: Phenlogoy extraction methodology exteding existing phenology extraction approaches, proposing a fully automated prototype for phenology extraction escaping from the user-oriented limitations of the existing packages. The main steps of this procedure are outlier removal based on the gaussian distribution of values, temporal interpolation creating decadal dates, regression fitting with Savitzky-Golay fitting, moving average to define intersections between reference and moving average curves and finaly the phenology extraction of meaningful metrics.
 
-TIMESAT&CropPhenology: Utilizes a first approach combing TIMESAT and CropPhenology packages, in order to combine output metrics.
+<b>TIMESAT&CropPhenology</b>: Utilizes a first approach combing TIMESAT and CropPhenology packages, in order to combine output metrics.
 
-CreateAnimatedTimeseries: An animation regarding the timeseries of NDVI, NDWI, PSRI calculated from Sentinel-2 imagery.
+<b>CreateAnimatedTimeseries</b>: An animation regarding the timeseries of NDVI, NDWI, PSRI calculated from Sentinel-2 imagery.
 
-TIMESAT: Phenology Extraction with TIMESAT package. TIMESAT is a software package for analysing time-series of satellite sensor data, able to investigate the seasonality of satellite time-series data and their relationship with dynamic properties of vegetation, such as phenology and temporal development.
+<b>TIMESAT</b>: Phenology Extraction with TIMESAT package. TIMESAT is a software package for analysing time-series of satellite sensor data, able to investigate the seasonality of satellite time-series data and their relationship with dynamic properties of vegetation, such as phenology and temporal development.
 
-NDVI-NDWI-PSRI for komotini parcels: Exploring timeseries of NDVI, NDWI, PSRI indices at parcel level to investigate past farming practices and define key-moments in phenology extraction.
+<b>NDVI-NDWI-PSRI for komotini parcels</b>: Exploring timeseries of NDVI, NDWI, PSRI indices at parcel level to investigate past farming practices and define key-moments in phenology extraction.
 
 ## Phenology_Extraction_NOA in detail:
 Based on an extended bibliographic research, this workflow was constructed in order to identify the critical phenological phases describing cotton crop, in order to evaluate the results of the developed phenology extraction service and improve the precision of the model. Within this framework, three phenological phases have been identified, apart from the germination phase, which are the vegetative, the reproducing and the ripening phase respectively. Each of these phases, are separated in individual phenological stages which describe the physiognomy of the plant. Moreover, the phenological development stages of plants, which is used in a variety of fields of application, such as in a number of scientific disciples and in the agricultural industry, use the BBCH-scale decimal code system, which is divided into primary and secondary growth stages, developed by Zadoks , to describe the stages of growth in plants. The following table presents the primary growth stages of cotton crop in the BBCH-scale among with the corresponding phenological stages and the phenological phases which are belong:
 
-BBCH Code	Definition	Phenological Stage	Phenological Phase<br/>
+<b>BCH Code	Definition	Phenological Stage	Phenological Phase</b><br/>
 0 -	Germination	Germination/	Germination phase<br/>
 1 -	Leaf Development (main shoot)	Tillering stage/	Vegetative phase<br/>
 2 -	Formation of side shoots<br/>		
