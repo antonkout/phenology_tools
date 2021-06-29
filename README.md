@@ -99,5 +99,13 @@ The following table presents the calculated phenological metrics jointly with th
 <b>TINDVIBeforeMax integral (BMI) </b>-	Numerical integration of NDVI between SOS and POS<br/>
 <b>TINDVIAfterMax integral (AMI) </b>-	Numerical integration of NDVI between POS and EOS<br/>
 
+### Results
+<b>Phenological phases of crop at pixel level</b>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/39597223/123815126-e62e0300-d8fe-11eb-987e-4dfd7e83d27a.gif" width="500" height="400" >
+  </p>
 
-
+<b>Timeseries of remote indices regarding cotton parcels</b>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/39597223/123815288-0958b280-d8ff-11eb-9f34-05cee5c1e5cc.gif" width="500" height="400" >
+  </p>
