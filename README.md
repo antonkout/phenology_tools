@@ -14,5 +14,3 @@ CreateAnimatedTimeseries: An animation regarding the timeseries of NDVI, NDWI, P
 TIMESAT: Phenology Extraction with TIMESAT package. TIMESAT is a software package for analysing time-series of satellite sensor data, able to investigate the seasonality of satellite time-series data and their relationship with dynamic properties of vegetation, such as phenology and temporal development.
 
 NDVI-NDWI-PSRI for komotini parcels: Exploring timeseries of NDVI, NDWI, PSRI indices at parcel level to investigate past farming practices and define key-moments in phenology extraction.
-
-![image](https://user-images.githubusercontent.com/39597223/123799730-2d14fc00-d8f1-11eb-89f8-a1d881937045.png)
