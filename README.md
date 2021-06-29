@@ -6,7 +6,7 @@ PhenologyExtractionRodopi.ipynb, Phenology_Extraction_NOA.ipynb are written in p
 ### Description of scripts:
 <b>PhenologyExtractionRodopi</b>: Cotton phenology extraction from Sentinel-2 data, combined with ground truth data provided at parcel level from cotton farmers from Rodopi, Greece
 
-<b>Phenology_Extraction_NOA</b>: Phenlogoy extraction methodology exteding existing phenology extraction approaches, proposing a fully automated prototype for phenology extraction escaping from the user-oriented limitations of the existing packages. The main steps of this procedure are outlier removal based on the gaussian distribution of values, temporal interpolation creating decadal dates, regression fitting with Savitzky-Golay fitting, moving average to define intersections between reference and moving average curves and finaly the phenology extraction of meaningful metrics.
+<b>Phenology_Extraction</b>: Phenlogoy extraction methodology exteding existing phenology extraction approaches, proposing a fully automated prototype for phenology extraction escaping from the user-oriented limitations of the existing packages. The main steps of this procedure are outlier removal based on the gaussian distribution of values, temporal interpolation creating decadal dates, regression fitting with Savitzky-Golay fitting, moving average to define intersections between reference and moving average curves and finaly the phenology extraction of meaningful metrics.
 
 <b>TIMESAT&CropPhenology</b>: Utilizes a first approach combing TIMESAT and CropPhenology packages, in order to combine output metrics.
 
@@ -16,7 +16,7 @@ PhenologyExtractionRodopi.ipynb, Phenology_Extraction_NOA.ipynb are written in p
 
 <b>NDVI-NDWI-PSRI for komotini parcels</b>: Exploring timeseries of NDVI, NDWI, PSRI indices at parcel level to investigate past farming practices and define key-moments in phenology extraction.
 
-## Phenology_Extraction_NOA in detail:
+## Phenology_Extraction in detail:
 Based on an extended bibliographic research, this workflow was constructed in order to identify the critical phenological phases describing cotton crop, in order to evaluate the results of the developed phenology extraction service and improve the precision of the model. Within this framework, three phenological phases have been identified, apart from the germination phase, which are the vegetative, the reproducing and the ripening phase respectively. Each of these phases, are separated in individual phenological stages which describe the physiognomy of the plant. Moreover, the phenological development stages of plants, which is used in a variety of fields of application, such as in a number of scientific disciples and in the agricultural industry, use the BBCH-scale decimal code system, which is divided into primary and secondary growth stages, developed by Zadoks , to describe the stages of growth in plants. The following table presents the primary growth stages of cotton crop in the BBCH-scale among with the corresponding phenological stages and the phenological phases which are belong:
 
 <b>BCH Code	Definition	Phenological Stage	Phenological Phase</b><br/>
