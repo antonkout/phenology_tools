@@ -62,8 +62,7 @@ where L is lag in days, N the number of years in the time-series and 365 the num
 The final phenological products are eleven phenological metrics describing the phenological crop phases. The start, peak and end of season are determined, as mentioned before, as the intersections of the reference time-series and the forward and backward lagged moving average curves respectively measured in Days of Year (DOY). The rate of increase in NDVI during the beginning of the season is related to the physiognomy of the vegetation and the green up rate, as it describes the velocity at which the crop moves from the germination stage to the growth stage of the plant. On the other hand, the rate of decrease describes the rate of senescence at which the crop shifts from the flowering phase to the ripening stage, where the harvesting begins. Additionally, seven phenological integrals describing the productivity of the seasonal crop are calculated as expressed from the three abovementioned phenological packages (TIMESAT, CropPhenology, FenicePhenolo) and describe different phenological components. 
 
 <p align="center">
-  <b></b>
-  <b>The large season integral and the small season integral as described in the TIMESAT package</b>
+  
   <img src="https://user-images.githubusercontent.com/39597223/123808296-4a4dc880-d8f9-11eb-946b-8fe054b32d37.png" width="500" height="400" >
   </p>
   
