@@ -1,5 +1,5 @@
 # PhenologyExtraction
-A repository folder regarding phenology extraction scripts utilizing existing packages (i.e. TIMESAT, CropPhenology) and proposing new methodologies. 
+A repository folder regarding phenology extraction scripts utilizing existing packages (i.e. TIMESAT, CropPhenology) and proposing new methodologies. Published work here: doi.org/10.1117/12.2571721
 
 PhenologyExtractionRodopi.ipynb, Phenology_Extraction_NOA.ipynb are written in python 3.7 where as TIMESAT&CropPhenology.ipynb, CreateAnimatedTimeseries.ipynb, TIMESAT, NDVI-NDWI-PSRI for komotini parcels.ipynb are wirtten in R.
 
